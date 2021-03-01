@@ -1,4 +1,4 @@
-# ATMC
+# Automated Template-Match Code (ATMC)
 
 Code that applies a template matching procedure to systematically detect ground-coupled airwaves in seismic records.
 The code implements Scipy, Numpy and Obspy functions. Also, detection of peaks can be either using an internal function
