@@ -1,19 +1,16 @@
 # Automated Template-Match Code (ATMC)
 
-Code that applies a template matching procedure to systematically detect ground-coupled airwaves in seismic records.
-The code implements Scipy, Numpy, Obspy and multiprocessing functions. 
-
-Detection of airwaves is performed by implementation of detect_peaks function, created by Duarte & Watanabe, 2018
-(https://github.com/BMClab/BMC).
+Code that applies a template matching procedure to systematically detect ground-coupled airwaves 
+in seismic records. This code implements Scipy, Numpy, Obspy and Multiprocessing functions. Detection of 
+airwaves is performed by implementation of detect_peaks function, created by Duarte & Watanabe, 2018 
+(https://github.com/BMClab/BMC). 
 
 Input data:
 
-- Database of seismic records in ASCII format or seismic data format (MSEED, SAC, among others).
+- Files of seismic records in ASCII format or seismic data format (MSEED, SAC, among others).
 - File where template is saved in ASCII or seismic data format.
-- Threshold value
-- Overlapping factor between time windows s, in samples. 
-
-To see more details about its application to a database, see Mendo-Pérez et al. (in prep). 
+- Threshold value (float).
+- Overlapping factor between time windows s, in samples (integer). 
 
 Template input file:
 
@@ -38,7 +35,9 @@ per year, and they have the same names.
 
 The format of the files of the database can be changed in line 231.
 
-Decimation 
+Implemented functions
+
+- Decimation 
 
 Decimation are applied to both database files and template files. Used in order to reduce
 time of calculations. The decimation is performed using scipy.signal.decimate
@@ -46,24 +45,29 @@ function (see Scipy documentation for more information about this function). Pri
 the calculations, the program asks for decimation. Valid input are y (yes) and n (no) keys.
 If y key is entered, a decimation factor must be entered. Only integer values can be used.
 
-Remove of RMS and trend
+- Remove of RMS and trend
 
 RMS and detrend of the template and the database is performed before cross correlation
 calculations. RMS is calculated by using an internal function. Detrending is perfomed by 
 using obspy stream property detrend (see Obspy documentation for more info). Linear detrending 
 is applied by default. Type of detrending can be changed in line 250.
 
-Cross correlation 
+- Cross correlation 
 
 Calculations of correlation values are performed by using obspy.signal.cross_correlation.correlate
 and obspy.signal.cross_correlation.xcorrmax (for more information about this functions, see Obspy
 documentation).
 
-Multiprocessing
+- Multiprocessing
 
 Multiprocessing calculation of R values is performed by applying pool function. For more information
 about pool function, see multiprocessing documentation in Python standard library. By default, it is implemented
 but it can be changed by commenting lines 284 - 286 and uncomment line 281.
+
+- Detection of events
+
+detect_peaks function of Duarte and Watanabe (2018) is implemented to search for peaks in R plots (for more information
+about this function, see https://github.com/BMClab/BMC). 
 
 Output data:
 
@@ -72,6 +76,9 @@ Output data:
    
 - .txt file that contains index of the elements in the |R| array above threshold.
   Name of the file: Peaks_year_component_templatefilename.txt
+
+References
+
 
 
 
