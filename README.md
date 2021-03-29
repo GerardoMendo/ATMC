@@ -1,5 +1,7 @@
 # Automated Template-Match Code (ATMC)
 
+ENGLISH
+
 Code that applies a template matching procedure to systematically detect ground-coupled airwaves 
 in seismic records. This code implements Scipy, Numpy, Obspy and Multiprocessing functions. Detection of 
 airwaves is performed by implementation of detect_peaks function, created by Duarte & Watanabe, 2018 
@@ -79,7 +81,91 @@ Output data:
 
 References
 
+SPANISH
 
+Código que aplica template matching para detección sistemática de ondas de aire acopladas al terreno
+en los registros sísimicos. Este código implementa funciones de SciPy, NumPy, ObsPy y Multiprocessing. 
+La detección de las ondas de aire se realiza a través de la función detect_peaks, creada por Duarte & Watanabe (2008).
+(https://github.com/BMClab/BMC). 
+
+
+Datos de entrada:
+
+- Archivos de los registros sísmicos en formato .txt o formato de dato sísmico (MSEED, SAC, entre otros).
+- Archivo del template guardado en formato .txt o formato de dato sísmico.
+- Valor umbral (flotante)
+- Factor de traslape entre ventanas de tiempo (en muestras, valor entero).
+
+Archivo de template:
+
+Archivos con extensión .txt o de dato sísmico (SAC,Seisan,MSEED) pueden ser usados. 
+Si se usa la extensión.txt, habilite la línea 141; si se usa la extensión de dato 
+sísmico, habilite la línea 148. El archivo template1.txt, adjunto al git, es un 
+ejemplo de un archivo de entrada de template.
+
+Archivos de la base de datos:
+
+El nombre de los archivos de la base de datos deben tener el siguiente formato:
+
+nombre_componente.mes.día.hora.formato
+
+nombre_componente debe ser especificado en la línea 139 (BH*, HH*),
+mes debe ingresarse como una lista de elementos en la línea 189,
+día es automáticamente calculado usando un ciclo for en la línea 222,
+hora es ingresado como una lista de elementos en la línea 192
+formato está establecido como .sac por defecto. Si se usa otro formate, 
+cambiar las líneas 231, 240 - 242.
+El año no se considera dentro del nombre de los archivos debido a que la 
+base de datos se separa por año.
+
+The formato del nombre de los archivos de la base de datos puede cambiarse
+en la línea 231.
+
+Funciones implementadas
+
+- Decimación 
+
+La decimación se aplica al template y a los archivos de la base de datos. Se usa para
+reducir el tiempo de cálculo. Se realiza a través de la función scipy.signal.decimate
+(vea la documentación de SciPy para más información sobre esta función). Antes de realizar
+los cálculos, el programa pregunta si se deciman los registros. Entradas válidas son y para
+sí y n para no. Si se usa y, se debe poner el factor de decimación. Solo valores enteros
+pueden ser ingresados.
+
+- Remover RMS y tendencia
+
+Se remueven el RMS y la tendencia de los archivos de template y la base de datos antes del cálculo
+de las correlaciones. El RMS se calcula usando una función interna. La tendencia se remueve usando  
+la propiedad del objeto stream de obspy detrend (vea la documentación de ObsPy para más información).
+Por defecto, se calcula y se remueve una tendencia lineal. El tipo de tendencia se puede cambiar en 
+la línea 250.
+
+- Correlación
+
+El cálculo de la correlación se realiza usando la función de ObsPy obspy.signal.cross_correlation.correlate
+y obspy.signal.cross_correlation.xcorrmax (para más información sobre el uso de estas funciones, refiérase
+a la documentación de ObsPy).
+
+- Multiprocessing
+
+El cálculo multiproceso de los valores R se realiza usando la función pool (para más información de esta
+función, refiérase a la documentación de Multiprocessing en Python standard library). Por defecto, se implementa
+pero esto se cambia comentando las líneas 284 - 286 y quitando el símbolo de comentario (#) de la línea 281.
+
+- Detection of events
+
+detect_peaks function of Duarte and Watanabe (2018) is implemented to search for peaks in R plots (for more information
+about this function, see https://github.com/BMClab/BMC). 
+
+Output data:
+
+- .txt file of absolute correlation (|R|) values (R-file) per month. 
+   Name of the file: R_values_component_year_templatefilename.txt
+   
+- .txt file that contains index of the elements in the |R| array above threshold.
+  Name of the file: Peaks_year_component_templatefilename.txt
+
+References
 
 
 
