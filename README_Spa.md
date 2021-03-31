@@ -65,7 +65,7 @@ Cuando se ejecuta el código, el valor umbral es requerido para continuar.
 El valor umbral es flotante por defecto. Si se ingresa un entero, se convierte
 automáticamente en flotante.
 
-d) OFactor de traslape s
+d) Factor de traslape s
 
 Cuando se ejecuta el código, el factor de traslape s es requerido para continuar.
 El valor s es entero por defecto. Si un valor flotante es ingresado, se redondea
@@ -109,13 +109,13 @@ en los arreglos de valores R (para más información de cómo funciona esta func
 
 Datos de salida:
 
-1. txt file of absolute correlation (|R|) values (R-file) per month. 
-   Name of the file: R_values_component_year_templatefilename.txt
+1. Archivo txt con el valor absoluto de los valores de correlación (|R|) por mes. 
+   Nombre del archivo: R_values_mes_año_nombre_archivo_template.txt
    
-2) txt file that contains index of the elements in the |R| array above threshold.
-  Name of the file: Peaks_year_component_templatefilename.txt
+2) Archivo txt que contiene el índice de los elementos del arreglo |R| que están arriba del valor umbral.
+  Nombre del archivo: Peaks_año_mes_componente_nombre_archivo_template.txt
 
-References
+Referencias
 
 Numpy
 Scipy
