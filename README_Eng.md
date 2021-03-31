@@ -40,19 +40,13 @@ b) Files of database:
 
 The names of the files have the following order:
 
-name_component.month.day.hour.format
+      name_component.month.day.hour.format
 
-name_component must be specified in line 139;
-
-month must be entered as a list of elements in line 189;
-
-day are automatically calculated using a for loop in line 222;
-
-hour is entered as a list in line 192;
-
-format is .sac by default. 
-
-If other format is used, change lines 231, 240 - 242.
+- name_component must be specified in line 139;
+- month must be entered as a list of elements in line 189;
+- day are automatically calculated using a for loop in line 222;
+- hour is entered as a list in line 192;
+- format is .sac by default. If other format is used, change lines 231, 240 - 242.
 
 Year is not considered in the file names because database is separated
 per year, and they have the same names. 
