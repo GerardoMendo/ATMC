@@ -73,40 +73,41 @@ automáticamente a entero.
 
 Funciones implementadas
 
-- Decimation of signals
+- Diezmado de señales
 
-Decimation are applied to both database files and template file. It is used to reduce
-the time of calculations. The decimation is performed using scipy.signal.decimate
-function (see https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.decimate.html
-for more information about this function). 
-Prior to the start of calculations, the program asks for decimation. Valid inputs are: y (yes) and n (no) 
-keys. If y key is entered, a decimation factor must be entered; only integer values are allowed.
+Diezmado de señales es aplicado tanto para los archivos de la base de datos como al archivo de template. Se aplica para 
+reducir el tiempo de cálculo. El diezmado se realiza usando la función scipy.signal.decimate
+(vease https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.decimate.html para más información acerca de esta
+función).
+Antes del comienzo de los cálculos, el programa pregunta si las señales se deben diezmar. Entradas válidas son: Tecla y (yes) y tecla n (no).
+Si se ingresa el caracter y, se pide introducir un factor de diezmado; sólo se pueden ingresar valores enteros.
 
-- Remove of RMS and trend
+- RMS and tendencia
 
-RMS and detrend of the database files and template file is performed before cross correlation
-calculations. RMS is calculated by using an internal function. Detrending is perfomed by 
-using obspy stream property detrend (see https://docs.obspy.org/packages/autogen/obspy.core.stream.Stream.decimate.html
-for more info). Linear detrending is applied by default. Type of detrending can be changed in line 250.
+Se remueve el RMS y la tendencia de las señales, de la base de datos y del template, antes del comienzo de los cálculos. 
+El RMS se calcula con una función establecida. La tendencia se elimina usando la propiedad del objeto Stream de Obspy
+detrend (vease https://docs.obspy.org/packages/autogen/obspy.core.stream.Stream.decimate.html para más información). 
+Se elimina tendencia lineal por defecto. El tipo de tendencia que se elimina se puede cambiar en la línea 250.
 
-- Cross correlation 
+- Correlación 
 
-Calculations of correlation values are performed by using obspy.signal.cross_correlation.correlate
-and obspy.signal.cross_correlation.xcorrmax (for more information about this functions, see
+El cálculo de los coeficientes de correlación (R) se realiza con las funciones obspy.signal.cross_correlation.correlate
+y obspy.signal.cross_correlation.xcorrmax (para más información sobre estas funciones, véase
 https://docs.obspy.org/packages/autogen/obspy.signal.cross_correlation.html). 
 
 - Multiprocessing
 
-Multiprocessing calculation of R values is performed by applying pool function. For more information
-about pool function, see https://docs.python.org/3/library/multiprocessing.html. 
-By default, it is implemented but it can be changed by commenting lines 284 - 286 and uncomment line 281.
+El cálculo multiproceso de los coeficientes de correlación values se realiza usando la función pool. Para más información 
+relacionada con la función pool, véase https://docs.python.org/3/library/multiprocessing.html. 
+Por defecto está implementada, pero puede cambiarse al comentar las líneas 284 - 286 y quitando el signo de comentario (#) 
+de la línea 281.
 
-- Detection of events
+- Detección de eventos
 
-detect_peaks function of Duarte and Watanabe (2018) is implemented to search for peaks in R plots (for more information
-about this function, see https://github.com/BMClab/BMC). 
+La función detect_peaks de Duarte and Watanabe (2018) se implementa para buscar los picos que sobrepasan el valor umbral
+en los arreglos de valores R (para más información de cómo funciona esta función, véase https://github.com/BMClab/BMC). 
 
-Output data:
+Datos de salida:
 
 1. txt file of absolute correlation (|R|) values (R-file) per month. 
    Name of the file: R_values_component_year_templatefilename.txt
