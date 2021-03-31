@@ -54,23 +54,24 @@ formato es .sac por defecto.
 
 Si se usa otro formato, cambiar las líneas 231, 240-242.
 
-Year is not considered in the file names because database is separated
-per year, and they have the same names. 
+El año no se considera en el nombre de los archivos debido a que la base 
+de datos se separa por año, y para cada año los nombres de los archivos
+son los mismos. Si se requiere, se puede cambiar el formato del nombre
+de los archivos de entrada en la línea 231.
 
-If required, the elements of the file name can be changed in line 231.
+c) Valor umbral:
 
-c) Threshold value:
+Cuando se ejecuta el código, el valor umbral es requerido para continuar.
+El valor umbral es flotante por defecto. Si se ingresa un entero, se convierte
+automáticamente en flotante.
 
-When running the code, threshold value is asked to enter. Threshold value
-is float by default. If an integer is entered, automatically changes to float.
+d) OFactor de traslape s
 
-d) Overlapping factor s
+Cuando se ejecuta el código, el factor de traslape s es requerido para continuar.
+El valor s es entero por defecto. Si un valor flotante es ingresado, se redondea
+automáticamente a entero.
 
-When running the code, overlapping factor value (s) is asked to enter. s value
-is integer by default. If a float value is entered, the program asks continuously
-until an integer value is entered.
-
-Implemented functions
+Funciones implementadas
 
 - Decimation of signals
 
