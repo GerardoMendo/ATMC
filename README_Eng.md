@@ -119,4 +119,4 @@ Numpy
 Scipy
 Obspy
 Multiprocessing
-Duarte and watanabe
+Duarte and watanabe 2008
