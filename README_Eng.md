@@ -1,19 +1,30 @@
-# Automated Template-Match Code (ATMC)
+# Automated Template-Match Code (ATMC) - Readme (English version)
 
-ENGLISH
+Content
+
+1. Description
+2. Requirements to run
+3. How to run the code
+4. Input data
+5. Implemented functions
+6. Output data
+7. References
+
+1. Description
 
 Code that applies a template matching procedure to systematically detect ground-coupled airwaves 
-in seismic records. This code implements Scipy, Numpy, Obspy and Multiprocessing functions. Detection of 
-airwaves is performed by implementation of detect_peaks function, created by Duarte & Watanabe, 2018 
-(https://github.com/BMClab/BMC). 
+in seismic records. This code implements Scipy (Virtanen et al., 2020), Numpy (Harris et al., 2020), 
+Obspy (Beyreuther et al., 2010) and Multiprocessing (Python software foundation, 2001) functions. 
+Detection of airwaves is performed by implementation of detect_peaks function (Duarte & Watanabe, 2018). 
 
-Requirements to run:
+2. Requirements to run:
 
 To run the code please install Python 3.7, NumPy, ObsPy, SciPy and Multiprocessing libraries. To see how to download
 and install them in different environments (Windows, MacOS and Linux), please refer to the official websites of each
-package. Here we strongly recommend the use of Anaconda (https://www.anaconda.com/). 
+package. Here we strongly recommend the use of Anaconda (https://www.anaconda.com/). detect_peaks function must be 
+downloaded from Duarte & Watanabe Github webpage: https://github.com/BMClab/BMC
 
-How to run the code:
+3. How to run the code:
 
 In a terminal window, type the following command:
 
@@ -23,7 +34,7 @@ If using IPython, type the following sentence:
 
       %run ATMCv1.0.py
 
-Input data:
+4. Input data:
 
 a) File of master signal/template in .txt or seismic data format (MSEED, SAC, SEISAN).
 b) Files of seismic records in .txt format or seismic data format (MSEED, SAC, SEISAN).
@@ -64,7 +75,7 @@ When running the code, overlapping factor value (s) is asked to enter. s value
 is integer by default. If a float value is entered, the program asks continuously
 until an integer value is entered.
 
-Implemented functions
+5. Implemented functions
 
 - Decimation of signals
 
@@ -99,18 +110,23 @@ By default, it is implemented but it can be changed by commenting lines 284 - 28
 detect_peaks function of Duarte and Watanabe (2018) is implemented to search for peaks in R plots (for more information
 about this function, see https://github.com/BMClab/BMC). 
 
-Output data:
+6. Output data:
 
-1. txt file of absolute correlation (|R|) values (R-file) per month. 
-   Name of the file: R_values_component_year_templatefilename.txt
+- txt file of absolute correlation (|R|) values (R-file) per month. 
+   Name of the file: R_values_month_year_templatefilename.txt
    
-2) txt file that contains index of the elements in the |R| array above threshold.
+- txt file that contains index of the elements in the |R| array above threshold.
   Name of the file: Peaks_year_component_templatefilename.txt
 
-References
+7. References
 
-Numpy
-Scipy
-Obspy
-Multiprocessing
-Duarte and watanabe 2008
+Beyreuther, M., Barsch, R., Krischer, L., Megies, T., Behr, Y., & Wassermann, J. (2010). ObsPy: A Python Toolbox for Seismology. Seismological Research Letters, 81(3), 530 - 533.  https://doi.org/10.1785/gssrl.81.3.530
+
+Duarte, M. & Watanabe, R. N. (2018). Notes on Scientific Computing for Biomechanics and Motor Control. GitHub repository, https://github.com/BMClab/BMC.
+
+Harris, C. R., Millman, K. J., van der Walt, S. J., Gommers, R., Virtanen, P., Cournapeau, D., Wieser, E., Taylor, J., Berg, S., Smith, N. J., Kern, R., Picus, M., Hoyer, S., van Kerkwijk, M. H., Brett, M., Haldane, A., Fernández del Río, J., Wiebe, M., Peterson, P, … Oliphant, T. E. (2020). Array programming with NumPy. Nature, 585, 357–362. https://doi.org/10.1038/s41586-020-2649-2
+
+Python software foundation.(2001). Python Documentation. https://docs.python.org/3/contents.html
+
+Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M., Reddy, T. R., Cournapeau, D., Burovski, E., Peterson, P., Weckesser, W., Bright, J., van der Walt, S. J., Brett, M., Wilson, J., Millman, K. J., Mayorov, N., Nelson, A. R. J., Jones, E., Kern, R., Larson, E., … SciPy 1.0 Contributors (2020). SciPy 1.0: fundamental algorithms for scientific computing in Python. Nature Methods, 17(3), 261-272. https://doi.org/10.1038/s41592-019-0686-2
+
