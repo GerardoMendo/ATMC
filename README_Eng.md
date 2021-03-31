@@ -13,26 +13,41 @@ Content
 1. Description
 
 Code that applies a template matching procedure to systematically detect ground-coupled airwaves 
-in seismic records. This code implements Scipy (Virtanen et al., 2020), Numpy (Harris et al., 2020), 
+in displacement seismic records. This code implements Scipy (Virtanen et al., 2020), Numpy (Harris et al., 2020), 
 Obspy (Beyreuther et al., 2010) and Multiprocessing (Python software foundation, 2001) functions. 
 Detection of airwaves is performed by implementation of detect_peaks function (Duarte & Watanabe, 2018). 
 
 2. Requirements to run:
 
-To run the code please install Python 3.7, NumPy, ObsPy, SciPy and Multiprocessing libraries. To see how to download
-and install them in different environments (Windows, MacOS and Linux), please refer to the official websites of each
-package. Here we strongly recommend the use of Anaconda (https://www.anaconda.com/). detect_peaks function must be 
-downloaded from Duarte & Watanabe Github webpage: https://github.com/BMClab/BMC
+ATMC code is written in Python programming language. To run the code Python 3.7, NumPy, ObsPy, SciPy and Multiprocessing 
+libraries must be installed. Information related to Download and installation in different operative systems (Windows, MacOS and Linux)
+is available in the official websites of each package. Here we strongly recommend the use of Anaconda (https://www.anaconda.com/). 
+detect_peaks function must be downloaded from Duarte & Watanabe Github webpage: https://github.com/BMClab/BMC. 
 
 3. How to run the code:
 
+- Linux
+
 In a terminal window, type the following command:
 
-      python ATMCV1.0.py 
+      python ATMC_1.0.py 
       
 If using IPython, type the following sentence:
 
-      %run ATMCv1.0.py
+      %run ATMC_1.0.py
+
+If using an IDE environment (e.g., Spyder) load the file and select the Run command to execute the code. 
+
+- MacOS 
+
+The instructions for Linux also apply to MacOS systems.
+
+- Windows
+
+Anaconda environment is strongly recommended for Windows users. If not, in a terminal window (e.g., Cygwin)
+type the following command
+
+      python ATMC_1.0.py
 
 4. Input data:
 
